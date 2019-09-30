@@ -1,4 +1,4 @@
-# A brainfuck IsolateWorker
+# A simple IsolateWorker
 
 ## Usage
 

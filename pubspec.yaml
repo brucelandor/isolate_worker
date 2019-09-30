@@ -1,5 +1,5 @@
 name: isolate_worker
-description: A brainfuck IsolateWorker.
+description: A simple IsolateWorker.
 version: 0.0.1
 homepage: https://github.com/brucelandor/isolate_worker
 author: libo <brucelandor@gmail.com>
