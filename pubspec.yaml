@@ -1,7 +1,7 @@
 name: isolate_worker
 description: A brainfuck IsolateWorker.
 version: 0.0.1
-# homepage: https://www.example.com
+homepage: https://github.com/brucelandor/isolate_worker
 author: libo <brucelandor@gmail.com>
 
 environment:
