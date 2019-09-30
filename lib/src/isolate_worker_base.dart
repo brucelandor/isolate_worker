@@ -37,6 +37,8 @@ class IsolateWorker {
 
   Future<bool> get ready => _completer.future;
 
+  Isolate get isolate => _isolate;
+
   kill({int priority = Isolate.beforeNextEvent}) {
     _isolate.kill(priority: priority);
   }
