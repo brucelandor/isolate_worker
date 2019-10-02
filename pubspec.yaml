@@ -1,6 +1,6 @@
 name: isolate_worker
 description: A simple IsolateWorker.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/brucelandor/isolate_worker
 author: libo <brucelandor@gmail.com>
 
