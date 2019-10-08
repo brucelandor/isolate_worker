@@ -4,6 +4,9 @@ import 'dart:isolate';
 typedef MessageHandler = FutureOr<dynamic> Function(dynamic);
 
 class IsolateWorker {
+  static const _sendPortKey = "sendPort";
+  static const _requestKey = "requestData";
+
   static _isolateEntry(List args) {
     SendPort sendPort = args[0] as SendPort;
     MessageHandler handler = args[1] as MessageHandler;
@@ -11,8 +14,8 @@ class IsolateWorker {
     sendPort.send(rp.sendPort);
     rp.listen((data) {
       final request = data as Map<String, dynamic>;
-      final resultPort = request["sendPort"] as SendPort;
-      final requestData = request["requestData"];
+      final resultPort = request[_sendPortKey] as SendPort;
+      final requestData = request[_requestKey];
       final result = handler(requestData);
       resultPort.send(result);
     });
@@ -42,12 +45,11 @@ class IsolateWorker {
   Future<dynamic> sendReceive(dynamic requestData) async {
     final rp = ReceivePort();
     final request = {
-      "sendPort": rp.sendPort,
-      "requestData": requestData,
+      _sendPortKey: rp.sendPort,
+      _requestKey: requestData,
     };
     _sendPort.send(request);
-    final result = await rp.first;
-    return result;
+    return rp.first;
   }
 
   Future<bool> get ready => _completer.future;
